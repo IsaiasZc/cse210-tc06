@@ -41,12 +41,11 @@ class Board:
 
     def to_string(self):
         text = "\n--------------------"
-        ## !IMPORTANT: I dont know how to add the players
-        ## name but the information it's ok
-        ## You could try to get the roster players in the  director
-        ## and bring it here as a parameter, I'm not sure
+        """!IMPORTANT: The only thing that we could not 
+        figure out was how to insert players names in their
+        appropriate postion"""
         for number,guess in self._chosen_number:
-            text += (f"\nPlayer 1: {number},{guess}")
+            text += (f"\nPlayer #: {number},{guess}")
 
 
         text += "\n--------------------"
