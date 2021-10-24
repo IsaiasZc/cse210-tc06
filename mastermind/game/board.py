@@ -55,7 +55,7 @@ class Board:
         player.append(guessed)            
 
 
-    def to_string(self, name):
+    def to_string(self):
         """Converts the board data to its string representation.
         Args:
            self (Board): an instance of Board.
@@ -66,8 +66,10 @@ class Board:
         """!IMPORTANT: The only thing that we could not 
         figure out was how to insert players names in their
         appropriate postion"""
+        n = 0
         for number,guess in self._chosen_number:
-            text += (f"\nPlayer {name}: {number}, {guess}")
+            n += 1
+            text += (f"\nPlayer {n} : {number}, {guess}")
 
 
         text += "\n--------------------"
