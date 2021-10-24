@@ -48,28 +48,27 @@ class Board:
                 guessed += "x"
             elif character in self._numbers:
                 guessed += "o"
-            else:
+            elif character not in self._numbers:
                 guessed += "*"
         # Store the information in its list
         player.append(number)
         player.append(guessed)            
 
 
-    def to_string(self):
+    def to_string(self, players):
         """Converts the board data to its string representation.
         Args:
            self (Board): an instance of Board.
+           players(List): The players objects who are playing.
         Returns:
             string: A representation of the current board and players names.
         """ 
         text = "\n--------------------"
-        """!IMPORTANT: The only thing that we could not 
-        figure out was how to insert players names in their
-        appropriate postion"""
-        n = 0
+    
+        idx = -1
         for number,guess in self._chosen_number:
-            n += 1
-            text += (f"\nPlayer {n} : {number}, {guess}")
+            idx += 1
+            text += (f"\nPlayer {players[idx].get_name()} : {number}, {guess}")
 
 
         text += "\n--------------------"

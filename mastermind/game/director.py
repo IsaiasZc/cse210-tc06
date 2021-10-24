@@ -55,8 +55,13 @@ class Director:
             self._roster.add_player(player)
     
     def _get_inputs(self):
+        """Gets the inputs at the beginning of each round of play.
+        Args:
+            self (Director): An instance of Director.
+        """
         # display the game board
-        board = self._board.to_string()
+        players = self._roster.players
+        board = self._board.to_string(players)
         self._console.write(board)
         # get next player's move
         player = self._roster.get_current()
@@ -66,11 +71,20 @@ class Director:
         player.set_move(move)
 
     def _do_updates(self):
+        """Updates the important game information in the board.
+        Args:
+            self (Director): An instance of Director.
+        """
         player = self._roster.get_current()
         move = player.get_move()
         self._board.apply(move)
     
     def _do_outputs(self):
+        """Outputs a result just if some player has won.
+
+        Args:
+            self (Director): An instance of Director.
+        """
         if self._board.is_match():
             winner = self._roster.get_current()
             name = winner.get_name()
